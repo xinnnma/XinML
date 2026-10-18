@@ -1,11 +1,13 @@
 # Unit tests
 
-Add real pytest tests here alongside algorithm implementation after Phase 2
-is approved. Test numerical results, predictions, supported input shapes,
-invalid inputs, and relevant edge cases for each implemented algorithm.
+`test_linear_regression.py` checks the implemented NumPy model against
+analytical solutions. Coverage includes predictions, multiple features,
+optional intercepts, noisy least squares, R², invalid inputs, unfitted models,
+rank-deficient and underdetermined designs, and refitting.
 
 Name test files `test_*.py` and import the installed `xinml` package. From the
-project root, run `uv run --locked pytest`.
+project root, run `uv run pytest -v`.
 
-No tests exist yet. Until real tests are added, pytest exits with code 5
-(no tests collected). This is not a passing test suite.
+Numerical assertions use floating-point tolerances. Tests import the installed
+package and do not require scikit-learn. Add real tests alongside future
+algorithms; do not add placeholder passing tests.
