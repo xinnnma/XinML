@@ -2,7 +2,7 @@
 
 ## Project Status
 
-XinML is a Python 3.11+ course project using a `src/xinml/` package layout, NumPy, uv, Hatchling, and pytest. Phase 2 implements Linear Regression with `numpy.linalg.lstsq`. Keep these changes uncommitted for user review. Do not begin Phase 3, create notebooks, or implement Logistic Regression without approval. Logistic Regression remains a provisional second algorithm pending course-material review.
+XinML is a Python 3.11+ course project using a `src/xinml/` package layout, NumPy, uv, Hatchling, and pytest. Phase 3 adds binary Logistic Regression with batch gradient descent alongside the existing least-squares Linear Regression. Preserve the Linear Regression implementation and tests. Keep Phase 3 changes uncommitted and unpushed for user review; do not create notebooks or proceed to another phase without approval.
 
 ## Working Rules
 
@@ -21,7 +21,7 @@ XinML is a Python 3.11+ course project using a `src/xinml/` package layout, NumP
 
 - `uv sync --locked --dev` installs the package and development dependencies into `.venv`.
 - `uv build` builds the source distribution and wheel.
-- `uv run pytest -v` runs the tests, including Linear Regression tests against analytical solutions and invalid inputs.
+- `uv run pytest -v` runs both models' tests against analytical solutions, deterministic datasets, and invalid inputs. Logistic Regression also checks numerical stability and convergence.
 
 ## Keeping These Instructions Current
 
