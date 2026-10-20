@@ -73,3 +73,21 @@ be run interactively in VS Code without registering a command-line kernel.
 
 These are demonstrations on one fixed split, without cross-validation or
 hyperparameter searches. They do not establish performance on new populations.
+
+## Reading the saved results
+
+The notebooks contain eight figures in total: three for exploration, two for
+Linear Regression, and three for Logistic Regression.
+
+| Notebook | Saved evaluation results |
+| --- | --- |
+| Linear Regression | R² **0.4526**, MSE **2900.1936**, and RMSE **53.8534** on 89 test rows. |
+| Logistic Regression | Accuracy **96.49%**, or 110 correct predictions out of 114 test rows. |
+
+R² and accuracy measure different tasks. R² compares regression squared error
+with a test-mean baseline; accuracy counts correct binary labels. The Breast
+Cancer confusion matrix is `[[41, 1], [3, 69]]`, with true labels as rows and
+predicted labels as columns in the order malignant, benign. It includes one
+malignant case classified as benign, so the overall accuracy does not describe
+every kind of error. The training-loss plot shows optimization progress; it
+does not measure performance on unseen data.

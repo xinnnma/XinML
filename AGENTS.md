@@ -2,7 +2,7 @@
 
 ## Project Status
 
-XinML is a Python 3.11+ course project using a `src/xinml/` package layout, NumPy, uv, Hatchling, and pytest. Phase 4 is complete and approved for publication, including three executed notebooks using bundled Diabetes and Breast Cancer datasets. Preserve both algorithms, their tests, and useful notebook outputs. Do not start Phase 5 or add algorithms or features without approval.
+XinML is a Python 3.11+ course project using a `src/xinml/` package layout, NumPy, uv, Hatchling, and pytest. It includes two algorithms, 152 tests, and three executed notebooks using bundled Diabetes and Breast Cancer datasets. The Phase 5 audit, final documentation, and presentation notes are complete, reviewed, and approved for publication. Preserve both algorithms, their tests, and useful notebook outputs. Subsequent work, commits, and pushes require explicit instructions. Presentation notes and the audit belong in `docs/`; actual presentation delivery remains the student's responsibility.
 
 ## Working Rules
 

@@ -5,22 +5,18 @@ Learning** at Rice University, taught by Professor Randy R. Davila. The goal is
 to build a small, understandable Python machine learning package and explain
 its use through Jupyter notebooks.
 
-**Current status: Phase 4 complete — notebook demonstrations.** The package provides
-NumPy Linear Regression and binary Logistic Regression with pytest tests.
-Three notebooks demonstrate exploration, preprocessing, and held-out model
-evaluation, with executed results and saved figures.
+The package provides NumPy Linear Regression and binary Logistic Regression.
+Three executed notebooks demonstrate exploration, preprocessing, modeling,
+and evaluation on held-out data, with saved results and figures.
 
-## Planned features
+## Project contents
 
-- At least two reusable machine learning algorithms implemented with NumPy.
-  Linear Regression and binary Logistic Regression are implemented.
-- Notebooks covering data exploration, preprocessing, modeling, and evaluation,
-  including at least one practical demonstration of the `xinml` package.
-- Comprehensive pytest tests for implemented behavior, numerical results,
-  input validation, and relevant edge cases.
-- Documentation explaining the algorithms, package installation, and usage.
-- A separate public GitHub repository with a clear commit history, followed by
-  a final presentation explaining the repository and results.
+- Two reusable estimators implemented with NumPy, without scikit-learn models.
+- Three independent Jupyter notebooks with eight saved figures.
+- 152 pytest tests covering numerical results, input validation, and edge cases.
+- Installation and usage examples, a final audit, and presentation notes.
+
+Public repository: [xinnnma/XinML](https://github.com/xinnnma/XinML).
 
 ## Project layout
 
@@ -31,6 +27,9 @@ XinML/
 ├── README.md
 ├── pyproject.toml
 ├── uv.lock
+├── docs/
+│   ├── FINAL_AUDIT.md
+│   └── PRESENTATION.md
 ├── src/
 │   └── xinml/
 │       ├── __init__.py
@@ -54,7 +53,14 @@ resolved dependency versions for a reproducible environment.
 ## Local setup
 
 Requires Python **3.11 or newer** and [uv](https://docs.astral.sh/uv/).
-Run the following from the XinML project folder:
+For a new checkout:
+
+```bash
+git clone https://github.com/xinnnma/XinML.git
+cd XinML
+```
+
+From the XinML project folder, install the locked environment:
 
 ```bash
 uv sync --locked --dev
@@ -217,6 +223,22 @@ environment setup, and reproducibility details. These demonstrations use one
 fixed train/test split, so their scores do not measure performance across all
 possible splits or populations.
 
+### Recorded results
+
+| Model and dataset | Training / test rows | Held-out results |
+| --- | --- | --- |
+| Linear Regression — Diabetes | 353 / 89 | R² **0.4526**, MSE **2900.1936**, RMSE **53.8534**. |
+| Logistic Regression — Breast Cancer | 455 / 114 | Accuracy **96.49%** (110 of 114 predictions correct). |
+
+R² compares squared prediction error with predicting the test target mean;
+accuracy measures the fraction of correct class labels. These scores describe
+different tasks and should not be compared directly. RMSE is expressed in the
+Diabetes target's units, while MSE uses squared units. The classification
+confusion matrix is `[[41, 1], [3, 69]]`, with true classes as rows and
+predicted classes as columns, ordered malignant then benign. The one malignant
+case predicted as benign is an important error despite the high accuracy.
+The classification example is educational and does not validate clinical use.
+
 ## Validation and tests
 
 To build the package locally:
@@ -240,9 +262,10 @@ convergence against a known solution. Numerical checks use floating-point
 tolerances and deterministic datasets. The models and unit tests do not rely
 on scikit-learn; the notebooks use it for datasets and utilities.
 
-## Next steps
+## Presentation and audit
 
-The package, tests, and notebook demonstrations are available at
-[xinnnma/XinML](https://github.com/xinnnma/XinML). Phase 4 has been reviewed
-and approved. Phase 5 and preparation of the final presentation remain
-future work and require approval before starting.
+[Presentation notes](docs/PRESENTATION.md) provide a 3–5 minute walkthrough
+and answers to likely questions. The [final audit](docs/FINAL_AUDIT.md) maps
+the supplied requirements to repository evidence and records validation and
+remaining submission tasks. Preparing these notes does not replace delivering
+the final presentation.
