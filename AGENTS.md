@@ -2,7 +2,7 @@
 
 ## Project Status
 
-XinML is a Python 3.11+ course project using a `src/xinml/` package layout, NumPy, uv, Hatchling, and pytest. Phase 3 adds binary Logistic Regression with batch gradient descent alongside the existing least-squares Linear Regression. Preserve the Linear Regression implementation and tests. Keep Phase 3 changes uncommitted and unpushed for user review; do not create notebooks or proceed to another phase without approval.
+XinML is a Python 3.11+ course project using a `src/xinml/` package layout, NumPy, uv, Hatchling, and pytest. Phase 4 is complete and approved for publication, including three executed notebooks using bundled Diabetes and Breast Cancer datasets. Preserve both algorithms, their tests, and useful notebook outputs. Do not start Phase 5 or add algorithms or features without approval.
 
 ## Working Rules
 
@@ -16,12 +16,14 @@ XinML is a Python 3.11+ course project using a `src/xinml/` package layout, NumP
 - Work only in XinML; do not modify the professor's course repository.
 - Do not configure a Git email, make a first commit, or publish to GitHub without the user's instructions. The user will provide a Rice email before the first commit.
 - Keep real tests in `tests/` and notebooks in `notebooks/`. Do not add placeholder tests that imply algorithms work.
+- Notebook scalers and models must fit training rows only. Use installed XinML models; scikit-learn is for bundled datasets and utilities. NumPy remains the only runtime dependency; notebook tools belong in the development group.
 
 ## Verified Commands
 
 - `uv sync --locked --dev` installs the package and development dependencies into `.venv`.
 - `uv build` builds the source distribution and wheel.
 - `uv run pytest -v` runs both models' tests against analytical solutions, deterministic datasets, and invalid inputs. Logistic Regression also checks numerical stability and convergence.
+- Use the project `.venv` kernel to execute notebooks from top to bottom. See `notebooks/README.md` for VS Code and command-line setup. Preserve useful outputs and figures, and remove saved errors and unnecessary execution metadata.
 
 ## Keeping These Instructions Current
 

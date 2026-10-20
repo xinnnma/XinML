@@ -5,9 +5,10 @@ Learning** at Rice University, taught by Professor Randy R. Davila. The goal is
 to build a small, understandable Python machine learning package and explain
 its use through Jupyter notebooks.
 
-**Current status: Phase 3 — Logistic Regression.** The package provides NumPy
-Linear Regression and binary Logistic Regression with pytest tests. Notebook
-demonstrations remain future work.
+**Current status: Phase 4 complete — notebook demonstrations.** The package provides
+NumPy Linear Regression and binary Logistic Regression with pytest tests.
+Three notebooks demonstrate exploration, preprocessing, and held-out model
+evaluation, with executed results and saved figures.
 
 ## Planned features
 
@@ -36,15 +37,18 @@ XinML/
 │       ├── linear_regression.py
 │       └── logistic_regression.py
 ├── notebooks/
-│   └── README.md
+│   ├── README.md
+│   ├── 01_data_exploration.ipynb
+│   ├── 02_linear_regression.ipynb
+│   └── 03_logistic_regression.ipynb
 └── tests/
     ├── README.md
     ├── test_linear_regression.py
     └── test_logistic_regression.py
 ```
 
-`src/xinml/` holds reusable package code. `notebooks/` will contain the course
-demonstrations, and `tests/` will contain the unit tests. `uv.lock` records
+`src/xinml/` holds reusable package code. `notebooks/` contains the course
+demonstrations, and `tests/` contains the unit tests. `uv.lock` records
 resolved dependency versions for a reproducible environment.
 
 ## Local setup
@@ -58,7 +62,7 @@ uv run --locked python -c "import xinml; print(xinml.__file__)"
 ```
 
 `uv sync` creates a local `.venv` and installs XinML in editable mode along
-with NumPy, pytest, and the IPython kernel. Changes to package source files
+with NumPy and the development tools. Changes to package source files
 are then available without reinstalling the package. See the
 [uv project documentation](https://docs.astral.sh/uv/concepts/projects/config/)
 for packaging details.
@@ -66,6 +70,8 @@ for packaging details.
 In VS Code, use the Python and Jupyter extensions and select the interpreter
 or notebook kernel from this project's `.venv`. Notebook tools and test tools
 are development dependencies; NumPy is the package's only runtime dependency.
+The development group also includes pandas, matplotlib, scikit-learn, and
+nbconvert for notebook analysis, plots, bundled datasets, and execution.
 
 ## Linear Regression
 
@@ -185,6 +191,32 @@ guarantee convergence; on perfectly separable data, unregularized weights
 can keep growing as loss decreases. Arithmetic overflow beyond floating-point
 range raises `ValueError` with guidance to scale inputs or reduce the step size.
 
+## Notebook demonstrations
+
+| Notebook | Dataset | Demonstrates |
+| --- | --- | --- |
+| [01_data_exploration.ipynb](notebooks/01_data_exploration.ipynb) | Diabetes | Dimensions, descriptive statistics, missing values, plots, splitting, and scaling. |
+| [02_linear_regression.ipynb](notebooks/02_linear_regression.ipynb) | Diabetes | XinML least squares, R², MSE, RMSE, and actual-versus-predicted values. |
+| [03_logistic_regression.ipynb](notebooks/03_logistic_regression.ipynb) | Breast Cancer | XinML binary classification, probabilities, accuracy, confusion matrix, and training loss. |
+
+Install all notebook dependencies with `uv sync --locked --dev`. In VS Code,
+open XinML, use the Python and Jupyter extensions, open a notebook, and choose
+this project's `.venv` interpreter in **Select Kernel**. Restart the kernel
+and select **Run All** to reproduce its outputs. Each notebook is independent;
+the numerical order is the suggested reading order.
+
+Both datasets are bundled with scikit-learn. After the environment is
+installed, notebook execution requires no internet or external dataset files.
+Splits use `random_state=42`. Diabetes is loaded with `scaled=False`, and all
+scalers and models are fitted only on training rows. The Breast Cancer split
+is stratified. Scikit-learn supplies datasets and utilities; XinML supplies
+both trained models. Outputs and figures are saved for GitHub viewing.
+
+See [notebooks/README.md](notebooks/README.md) for terminal execution,
+environment setup, and reproducibility details. These demonstrations use one
+fixed train/test split, so their scores do not measure performance across all
+possible splits or populations.
+
 ## Validation and tests
 
 To build the package locally:
@@ -205,12 +237,12 @@ models, and rank-deficient designs. Logistic Regression tests cover binary
 training, probability shapes and class ordering, accuracy, optional
 intercepts, input and parameter validation, numerical stability, and
 convergence against a known solution. Numerical checks use floating-point
-tolerances and deterministic datasets. No scikit-learn dependency is required.
+tolerances and deterministic datasets. The models and unit tests do not rely
+on scikit-learn; the notebooks use it for datasets and utilities.
 
 ## Next steps
 
-Review the Logistic Regression implementation before approving a commit or
-notebook work. The first two commits are published at
-[xinnnma/XinML](https://github.com/xinnnma/XinML). Phase 3 changes remain local
-and uncommitted. Notebook demonstrations and the final presentation remain
-future work.
+The package, tests, and notebook demonstrations are available at
+[xinnnma/XinML](https://github.com/xinnnma/XinML). Phase 4 has been reviewed
+and approved. Phase 5 and preparation of the final presentation remain
+future work and require approval before starting.
